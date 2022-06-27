@@ -1,17 +1,25 @@
 <x-layout>
+    @php
+        if ($listing->logo != '') {
+            $logo = 'storage/' . $listing->logo;
+        } else {
+            $logo = 'images/no-image.png';
+        }
+    @endphp
     <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
-                Create a Gig
+                Edit Gig
             </h2>
-            <p class="mb-4">Post a gig to find a developer</p>
+            <p class="mb-4">Edit: {{$listing->title}}</p>
         </header>
 
-        <form method="POST" action="/listings" enctype="multipart/form-data">
+        <form method="POST" action="/listings/{{$listing->id}}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="mb-6">
                 <label for="company" class="inline-block text-lg mb-2">Company Name</label>
-                <input type="text" value="{{old('company')}}" class="border border-gray-200 rounded p-2 w-full" name="company" />
+                <input type="text" value="{{old('company', $listing->company)}}" class="border border-gray-200 rounded p-2 w-full" name="company" />
                 @error('company')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
@@ -19,7 +27,7 @@
 
             <div class="mb-6">
                 <label for="title" class="inline-block text-lg mb-2">Job Title</label>
-                <input type="text" value="{{old('title')}}" class="border border-gray-200 rounded p-2 w-full" name="title"
+                <input type="text" value="{{old('title', $listing->title)}}" class="border border-gray-200 rounded p-2 w-full" name="title"
                     placeholder="Example: Senior Laravel Developer" />
                 @error('title')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -28,7 +36,7 @@
 
             <div class="mb-6">
                 <label for="location" class="inline-block text-lg mb-2">Job Location</label>
-                <input type="text" value="{{old('location')}}" class="border border-gray-200 rounded p-2 w-full" name="location"
+                <input type="text" value="{{old('location', $listing->location)}}" class="border border-gray-200 rounded p-2 w-full" name="location"
                     placeholder="Example: Remote, Boston MA, etc" />
                 @error('location')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -37,7 +45,7 @@
 
             <div class="mb-6">
                 <label for="email" class="inline-block text-lg mb-2">Contact Email</label>
-                <input type="text" value="{{old('email')}}" class="border border-gray-200 rounded p-2 w-full" name="email" />
+                <input type="text" value="{{old('email', $listing->email)}}" class="border border-gray-200 rounded p-2 w-full" name="email" />
                 @error('email')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
@@ -47,7 +55,7 @@
                 <label for="website" class="inline-block text-lg mb-2">
                     Website/Application URL
                 </label>
-                <input type="text" value="{{old('website')}}" class="border border-gray-200 rounded p-2 w-full" name="website" />
+                <input type="text" value="{{old('website', $listing->website)}}" class="border border-gray-200 rounded p-2 w-full" name="website" />
                 @error('website')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
@@ -57,7 +65,7 @@
                 <label for="tags" class="inline-block text-lg mb-2">
                     Tags (Comma Separated)
                 </label>
-                <input type="text" value="{{old('tags')}}" class="border border-gray-200 rounded p-2 w-full" name="tags"
+                <input type="text" value="{{old('tags', $listing->tags)}}" class="border border-gray-200 rounded p-2 w-full" name="tags"
                     placeholder="Example: Laravel, Backend, Postgres, etc" />
                 @error('tags')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -69,6 +77,7 @@
                     Company Logo
                 </label>
                 <input type="file" class="border border-gray-200 rounded p-2 w-full" name="logo" />
+                <img class="w-48 mr-6 mb-6" src="{{ asset($logo) }}" alt="" />
                 @error('logo')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
@@ -79,7 +88,7 @@
                     Job Description
                 </label>
                 <textarea class="border border-gray-200 rounded p-2 w-full" name="description" rows="10"
-                    placeholder="Include tasks, requirements, salary, etc">{{old('description')}}</textarea>
+                    placeholder="Include tasks, requirements, salary, etc">{{old('description', $listing->description)}}</textarea>
                 @error('description')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
