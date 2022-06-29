@@ -21,10 +21,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 5. Login
 6. Scope Filtering
 
-### Following are the execution process
-Step 1: make database named `laragigs`
-Step 2: import sql file and made connection in.env file
-Step 3: composer update
-Step 4: php artisan migrate
-Step 5: php artisan db:seed
-Step 6: php artisan serve
+### Following are the execution processess
+<p>Step 1: make database named `laragigs`</p>
+<p>Step 2: import sql file and made connection in.env file</p>
+<p>Step 3: composer update</p>
+<p>Step 4: php artisan migrate</p>
+<p>Step 5: php artisan db:seed</p>
+<p>Step 6: php artisan serve</p>
