@@ -12,7 +12,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## this is simple laravel-9 application for begginer
+## This is simple laravel-9 application for begginer
 ### What we have included in this project
 1. Routing
 2. Eloquent
