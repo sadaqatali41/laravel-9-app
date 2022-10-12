@@ -12,7 +12,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## This is simple laravel-9 application for begginer
+## This is simple laravel-9 application for beginner
 ### What we have included in this project
 1. Routing
 2. Eloquent
@@ -21,10 +21,16 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 5. Login
 6. Scope Filtering
 
-### Following are the execution processess
-<p>Step 1: make database named `laragigs`</p>
-<p>Step 2: import sql file and made connection in.env file</p>
-<p>Step 3: composer update</p>
-<p>Step 4: php artisan migrate</p>
-<p>Step 5: php artisan db:seed</p>
-<p>Step 6: php artisan serve</p>
+## How to get this project?
+```
+git clone https://github.com/sadaqatali41/laravel-9-app.git
+```
+
+### Following steps are there for execution
+1. make a database named `laragigs` & rename `.env.example` file to `.env`
+2. import sql file and made connection in `.env` file
+3. `composer update`
+7. `php artisan key:generate`
+4. `php artisan migrate`
+5. `php artisan db:seed`
+6. `php artisan serve`
